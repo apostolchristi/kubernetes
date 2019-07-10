@@ -1,0 +1,38 @@
+#------------------------------------------------------
+#Repository - authorization-server - Service: NodePort
+#------------------------------------------------------
+apiVersion: v1
+kind: Service         # Type/Kind of Work/Function which cluster will interpret to do
+metadata:
+  name: authorization
+
+spec:                 #This defines which pods are going to be represented by this Service
+  selector:           #The service becomes a network endpoint for other services or maybe external uses to connect to (ex: browser)
+    app: authorization
+
+  ports:
+    - name: http
+      port: 8086      #this is Service port
+      nodePort: 30086 #this is Node port
+  type: NodePort    #Expose it to the  whole world
+
+---
+
+#---------------------------------------------------
+#Database - mysql-authorization - Service: Cluster
+#---------------------------------------------------
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-authorization #network name
+
+spec:
+  selector:
+    app: mysql-authorization  #pod identification
+
+  ports:
+    - name: mysql-authorization-endpoint
+      port: 3306
+  type: ClusterIP   # expose it only to node pods
+
+---
