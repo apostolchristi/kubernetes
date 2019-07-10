@@ -14,7 +14,7 @@ spec:                 #This defines which pods are going to be represented by th
     - name: http
       port: 8086      #this is Service port
       nodePort: 30086 #this is Node port
-  type: NodePort    #Expose it to the  whole world
+  type: NodePort    #Expose it to for Nodes
 
 ---
 
