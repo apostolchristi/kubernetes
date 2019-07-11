@@ -24,6 +24,10 @@ spec:                #This defines which pods are going to be represented by thi
         image: capostol93/place-management
         ports:
           - containerPort: 8084
+        resources:
+          requests:
+            memory: 300Mi
+            cpu: 100m
         env:
           - name: SPRING_PROFILES_ACTIVE
             value: kubernetes

@@ -24,6 +24,10 @@ spec:
         image: capostol93/takeyourseat-frontend
         ports:
           - containerPort: 80
+        resources:
+          requests:
+            memory: 100Mi
+            cpu: 50m
 #        env:
 #          - name: SPRING_PROFILES_ACTIVE
 #            value: kubernetes

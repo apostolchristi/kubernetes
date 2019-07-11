@@ -24,6 +24,10 @@ spec:
         image: capostol93/authorization-server
         ports:
           - containerPort: 8086
+        resources:
+          requests:
+            memory: 300Mi
+            cpu: 100m
         env:
           - name: SPRING_PROFILES_ACTIVE
             value: kubernetes
