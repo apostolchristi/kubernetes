@@ -70,10 +70,10 @@ spec:
               value: "sa"
             - name: MYSQL_PASSWORD
               value: "password"
-#          volumeMounts: # From where to get data from the inside of container
-#            - name: data
-#              mountPath: /var/lib/mysql
-#              subPath: mysql
+          volumeMounts: # From where to get data from the inside of container
+            - name: data
+              mountPath: /var/lib/mysql
+              subPath: mysql
           resources:
             requests:
               memory: 500Mi
