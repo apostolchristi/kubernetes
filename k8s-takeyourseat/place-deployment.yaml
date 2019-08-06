@@ -67,4 +67,8 @@ spec:
               value: "sa"
             - name: MYSQL_PASSWORD
               value: "password"
+          resources:
+            requests:
+              memory: 500Mi
+              cpu: 100m
 ---

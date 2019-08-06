@@ -21,7 +21,7 @@ spec:
     spec:               #Aditional "Pods" info as( container image, name, port, ans other settings)
       containers:
       - name: takeyourseat-frontend
-        image: capostol93/takeyourseat-frontend
+        image: capostol93/takeyourseat-frontend4
         ports:
           - containerPort: 80
         resources:

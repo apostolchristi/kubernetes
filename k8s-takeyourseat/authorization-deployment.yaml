@@ -24,9 +24,12 @@ spec:
         image: capostol93/authorization-server
         ports:
           - containerPort: 8086
-        resources:
+        resources:      #Request for the node to allocate this memory or ram and cpu
           requests:
-            memory: 300Mi
+            memory: 350Mi
+            cpu: 100m
+          limits:
+            memory: 350Mi
             cpu: 100m
         env:
           - name: SPRING_PROFILES_ACTIVE
@@ -67,15 +70,19 @@ spec:
               value: "sa"
             - name: MYSQL_PASSWORD
               value: "password"
-          volumeMounts: # From where to get data from the inside of container
-            - name: data
-              mountPath: /var/lib/mysql
-              subPath: mysql
-      volumes:
-        - name: data
-      #Thi is the way we can store data on other servers or hosts by pointing it to a file (storage-one.yaml) which we can configure for all pods if it is necessary
-          persistentVolumeClaim:
-            claimName: data
+#          volumeMounts: # From where to get data from the inside of container
+#            - name: data
+#              mountPath: /var/lib/mysql
+#              subPath: mysql
+          resources:
+            requests:
+              memory: 500Mi
+              cpu: 100m
+#      volumes:
+#        - name: data
+#      #Thi is the way we can store data on other servers or hosts by pointing it to a file (storage-one.yaml) which we can configure for all pods if it is necessary
+#          persistentVolumeClaim:
+#            claimName: data
 
 #    # This is the way we store data on our host system
 #          hostPath:

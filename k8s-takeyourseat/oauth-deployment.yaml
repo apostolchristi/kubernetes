@@ -67,4 +67,21 @@ spec:
               value: "sa"
             - name: MYSQL_PASSWORD
               value: "password"
+          resources:
+            requests:
+              memory: 500Mi
+              cpu: 100m
+          volumeMounts: # From where to get data from the inside of container
+            - name: data
+              mountPath: /var/lib/mysql
+              subPath: mysql
+            resources:
+              requests:
+                memory: 500Mi
+                cpu: 100m
+      volumes:
+        - name: data
+          #Thi is the way we can store data on other servers or hosts by pointing it to a file (storage-one.yaml) which we can configure for all pods if it is necessary
+          persistentVolumeClaim:
+            claimName: data
 ---
